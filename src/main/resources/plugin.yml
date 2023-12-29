@@ -1,0 +1,11 @@
+name: GitGrabber
+version: '${project.version}'
+main: io.carsonjf.gitgrabber.GitGrabber
+api-version: 1.20
+commands:
+  gitgrabber:
+    description: Your command description
+    permission: gitgrabber.admin
+  reload:
+    description: Reload the plugin
+    permission: gitgrabber.admin

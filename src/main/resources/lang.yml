@@ -1,0 +1,5 @@
+messages:
+  success: "<green><underline>You did it!"
+  noPermission: "<red>You do not have permission to use this command."
+  onlyPlayer: "<red>This command can only be run by a player."
+  reloaded: "<bold><yellow>Plugin Reloaded..."
