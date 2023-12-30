@@ -1,11 +1,17 @@
 name: GitGrabber
+author: Lumine
 version: '${project.version}'
 main: io.carsonjf.gitgrabber.GitGrabber
 api-version: 1.20
+description: Work smarter not harder
 commands:
   gitgrabber:
     description: Your command description
-    permission: gitgrabber.admin
-  reload:
-    description: Reload the plugin
-    permission: gitgrabber.admin
+    aliases: [gg]
+permissions:
+  gitgrabber.admin:
+    description: Gives access to everything!
+    default: op
+  gitgrabber.reload:
+    description: Gives access /gg reload!
+    default: op

@@ -1,17 +1,18 @@
-package io.carsonjf.gitgrabber;
+package io.carsonjf.gitgrabber.managers;
 
+import io.carsonjf.gitgrabber.GitGrabber;
+import io.lumine.mythic.bukkit.utils.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import io.papermc.paper.text.PaperComponents;
 
 import java.io.File;
-import java.util.logging.Level;
 
 public class LanguageManager {
 
     private final GitGrabber plugin;
-    private FileConfiguration langConfig;
+    private static FileConfiguration langConfig;
     private File langFile;
 
     public LanguageManager(GitGrabber plugin) {
@@ -31,17 +32,9 @@ public class LanguageManager {
         return langConfig;
     }
 
-    public FileConfiguration getLangConfig() {
-        return langConfig;
-    }
-
-    // Rest of the class...
-
-
-
-    public Component getMessage(String key) {
+    public static Component getMessageOutput(String key) {
         String rawMessage = langConfig.getString("messages." + key, "Message not found: " + key);
-        return MiniMessage.miniMessage().deserialize(rawMessage);
+        return (Component) MiniMessage.miniMessage().deserialize(rawMessage);
 
     }
 }

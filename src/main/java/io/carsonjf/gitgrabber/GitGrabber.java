@@ -1,37 +1,30 @@
 package io.carsonjf.gitgrabber;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import io.carsonjf.gitgrabber.commands.AdminCommand;
+import io.carsonjf.gitgrabber.managers.CommandManager;
+import io.lumine.mythic.bukkit.utils.plugin.LuminePlugin;
+import lombok.Getter;
 
-import java.util.logging.Level;
 
-public class GitGrabber extends JavaPlugin {
+public class GitGrabber extends LuminePlugin {
 
-    private LanguageManager languageManager;
+    protected static GitGrabber plugin;
 
-    @Override
-    public void onEnable() {
-        // Initialize the language manager
-        languageManager = new LanguageManager(this);
-        languageManager.loadLangConfig();
+    @Getter
+    protected CommandManager commandManager;
 
-        // Register commands using the CommandManager
-        CommandManager.registerCommands(this);
+    public static GitGrabber inst() {
+        return plugin;
+    }
+    public void Enable() {
+
+        this.registerCommand("gitgrabber", new AdminCommand(this));
     }
 
-    // Your existing methods...
+    public void Disable() {
 
-    public void reloadPlugin() {
-        // Reload configuration files or any other necessary reload logic
-
-        // Example: Reload lang.yml
-        languageManager.loadLangConfig();
-
-        // Additional reload logic if needed
-
-        getLogger().log(Level.INFO, "GitGrabber plugin reloaded!");
     }
 
-    public LanguageManager getLanguageManager() {
-        return languageManager;
+    public void Load() {
     }
 }
