@@ -2,6 +2,8 @@ package io.carsonjf.gitgrabber;
 
 import io.carsonjf.gitgrabber.commands.AdminCommand;
 import io.carsonjf.gitgrabber.managers.CommandManager;
+import io.carsonjf.gitgrabber.managers.LanguageManager;
+import io.lumine.mythic.bukkit.utils.logging.Log;
 import io.lumine.mythic.bukkit.utils.plugin.LuminePlugin;
 import lombok.Getter;
 
@@ -16,15 +18,19 @@ public class GitGrabber extends LuminePlugin {
     public static GitGrabber inst() {
         return plugin;
     }
-    public void Enable() {
+    @Override
+    public void enable() {
 
         this.registerCommand("gitgrabber", new AdminCommand(this));
+        LanguageManager.loadLangConfig();
+
     }
 
     public void Disable() {
 
     }
-
-    public void Load() {
+    @Override
+    public void load() {
+        Log.good("Plugin Loaded");
     }
 }

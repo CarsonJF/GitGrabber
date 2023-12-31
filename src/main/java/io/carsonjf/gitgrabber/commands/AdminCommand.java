@@ -2,10 +2,13 @@ package io.carsonjf.gitgrabber.commands;
 
 import io.carsonjf.gitgrabber.GitGrabber;
 import io.lumine.mythic.bukkit.utils.commands.Command;
+import io.lumine.mythic.bukkit.utils.logging.Log;
 import org.bukkit.command.CommandSender;
 
 import io.carsonjf.gitgrabber.managers.CommandManager;
 import java.util.List;
+
+import static io.carsonjf.gitgrabber.managers.CommandManager.*;
 
 public class AdminCommand extends Command<GitGrabber> {
     public AdminCommand(GitGrabber plugin) {
@@ -18,9 +21,9 @@ public class AdminCommand extends Command<GitGrabber> {
 
     @Override
     public boolean onCommand(CommandSender sender, String[] args) {
-        CommandManager.sendCommandMessage(sender, new String[] {
-                "Carson made a plugin. Sad."
-        });
+        Log.info("run command");
+        sendHeader(sender);
+        sendSuccess(sender, "<green><bold>Command run successfully!");
         return true;
     }
 
